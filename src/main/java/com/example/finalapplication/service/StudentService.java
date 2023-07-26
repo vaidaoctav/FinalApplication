@@ -2,6 +2,7 @@ package com.example.finalapplication.service;
 
 import com.example.finalapplication.domain.Student;
 import com.example.finalapplication.repository.StudentRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class StudentService {
         return studentRepository.save(student);
     }
     public Student findStudentById(Long id) {
-        return studentRepository.findById(id).orElseThrow(()->new RuntimeException("Student not found"));
+        return studentRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Student with ID " + id + " not found"));
     }
     public void deleteStudentById(Long id) {
         studentRepository.deleteById(id);
