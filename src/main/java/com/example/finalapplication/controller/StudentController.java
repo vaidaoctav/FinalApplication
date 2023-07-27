@@ -23,12 +23,12 @@ public class StudentController {
         return studentService.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/student")
     public Student addStudent(@RequestBody Student student) {
         return studentService.saveStudent(student);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/student/{id}")
     public Student findStudentById(@PathVariable Long id) {
         return studentService.findStudentById(id);
     }
